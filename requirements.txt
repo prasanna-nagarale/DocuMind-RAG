@@ -8,3 +8,6 @@ sentence-transformers
 groq 
 requests 
 beautifulsoup4
+unstructured
+python-docx
+openpyxl

@@ -1,90 +1,155 @@
-🤖 RAG Chatbot - PDF & Web Scraping
-A powerful Retrieval-Augmented Generation (RAG) chatbot built with Streamlit that allows you to chat with your documents (PDFs) or scraped web content using Groq's LLM models.
+🤖 RAG Chatbot – PDF & Web Scraping
+
+A Retrieval-Augmented Generation (RAG) chatbot built with Streamlit that allows users to chat only from provided PDF documents or scraped web content.
+The chatbot uses Groq’s high-performance LLMs along with vector search to deliver accurate, hallucination-free responses.
+
 ✨ Features
 
-📄 PDF Document Processing: Upload and chat with PDF documents
-🌐 Web Scraping: Scrape and chat with website content
-💬 Interactive Chat Interface: Natural conversation with your data
-🔧 Configurable Settings: Adjust model parameters, temperature, and retrieval settings
-🚀 Powered by Groq: Fast inference with state-of-the-art LLM models
-🔍 Vector Search: Efficient semantic search using FAISS and HuggingFace embeddings
+📄 PDF Document Processing
+Upload PDF files and ask questions directly from the document content.
+
+🌐 Web Scraping Support
+Scrape website content and interact with the extracted information.
+
+💬 Interactive Chat Interface
+User-friendly Streamlit interface for natural conversations.
+
+🔍 Vector-Based Retrieval
+Efficient semantic search using FAISS and HuggingFace embeddings.
+
+🚀 Powered by Groq LLMs
+Ultra-fast inference using models like LLaMA 3.1 and Mixtral.
+
+🔧 Highly Configurable
+Control model selection, temperature, chunk size, and retrieval depth.
 
 🛠️ Technologies Used
 
-Streamlit - Web interface
-LangChain - Document processing and text splitting
-FAISS - Vector database for similarity search
-HuggingFace - Embeddings (all-MiniLM-L6-v2)
-Groq - LLM inference (Llama 3.1, Mixtral)
-BeautifulSoup - Web scraping
-PyPDF - PDF processing
+Streamlit – Web application interface
+
+LangChain – Document processing and orchestration
+
+FAISS – Vector database for similarity search
+
+HuggingFace – Embeddings (all-MiniLM-L6-v2)
+
+Groq – LLM inference engine
+
+BeautifulSoup – Web scraping
+
+PyPDF – PDF document parsing
 
 📦 Installation
-1. Clone the Repository
-bashgit clone <your-repo-url>
+1️⃣ Clone the Repository
+git clone <your-repo-url>
 cd rag-chatbot
-2. Create Virtual Environment (Recommended)
-bash# Windows
+
+2️⃣ Create a Virtual Environment (Recommended)
+Windows
 python -m venv venv
 venv\Scripts\activate
 
-# Mac/Linux
+macOS / Linux
 python3 -m venv venv
 source venv/bin/activate
-3. Install Dependencies
-bashpip install streamlit
+
+3️⃣ Install Dependencies
+Option 1: Install manually
+pip install streamlit
 pip install langchain-community langchain-core langchain-text-splitters
 pip install pypdf faiss-cpu sentence-transformers
 pip install groq requests beautifulsoup4 python-dotenv
-Or install from requirements.txt (if provided):
-bashpip install -r requirements.txt
-4. Set Up Environment Variables
 
-Copy the .env.example file to .env:
+Option 2: Install from requirements.txt
+pip install -r requirements.txt
 
-bashcp .env.example .env
+🔑 Environment Setup
+1️⃣ Create .env file
+cp .env.example .env
 
-Edit the .env file and add your Groq API key:
+2️⃣ Add your Groq API Key
+GROQ_API_KEY=your_actual_groq_api_key_here
 
-envGROQ_API_KEY=your_actual_groq_api_key_here
-Get your Groq API Key: https://console.groq.com/keys
-5. Run the Application
-bashstreamlit run app.py
-The app will open in your browser at http://localhost:8501
+
+🔗 Get your API key from:
+https://console.groq.com/keys
+
+▶️ Run the Application
+streamlit run app.py
+
+
+The app will open at:
+👉 http://localhost:8501
+
 🔧 Configuration
-All configuration is managed through the .env file. Here are the available options:
-Required Configuration
-VariableDescriptionExampleGROQ_API_KEYYour Groq API key (Required)gsk_xxxxx...
-Model Configuration
-VariableDefaultDescriptionMODEL_NAMEllama-3.1-8b-instantLLM model to useTEMPERATURE0Randomness (0-1)MAX_COMPLETION_TOKENS1024Max response length
-Embedding Configuration
-VariableDefaultDescriptionEMBEDDING_MODELall-MiniLM-L6-v2HuggingFace embedding model
-Text Processing Configuration
-VariableDefaultDescriptionCHUNK_SIZE1000Characters per chunkCHUNK_OVERLAP200Overlapping characters
-Retrieval Configuration
-VariableDefaultDescriptionRETRIEVAL_K3Number of chunks to retrieve
-Web Scraping Configuration
-VariableDefaultDescriptionDEFAULT_SCRAPE_URLhttps://www.icmr.gov.in/tendersDefault URLSCRAPE_TIMEOUT10Request timeout (seconds)MIN_TEXT_LENGTH30Minimum text length to include
+
+All configuration is managed using the .env file.
+
+🔐 Required Configuration
+Variable	Description
+GROQ_API_KEY	Your Groq API key
+
+🧠 Model Configuration
+Variable	Default	Description
+MODEL_NAME	llama-3.1-8b-instant	LLM model
+TEMPERATURE	0	Controls randomness (0–1)
+MAX_COMPLETION_TOKENS	1024	Max response length
+
+📊 Embedding Configuration
+Variable	Default	Description
+EMBEDDING_MODEL	all-MiniLM-L6-v2	HuggingFace embedding model
+
+✂️ Text Processing Configuration
+Variable	Default	Description
+CHUNK_SIZE	1000	Characters per chunk
+CHUNK_OVERLAP	200	Overlap between chunks
+
+🔎 Retrieval Configuration
+Variable	Default	Description
+RETRIEVAL_K	3	Number of chunks retrieved
+
+🌐 Web Scraping Configuration
+Variable	Default	Description
+DEFAULT_SCRAPE_URL	https://www.icmr.gov.in/tenders	Default URL
+SCRAPE_TIMEOUT	10	Request timeout (seconds)
+MIN_TEXT_LENGTH	30	Minimum text length
+
 🚀 Usage
-PDF Mode
+📄 PDF Mode
 
-Select "PDF Upload" in the sidebar
-Click "Browse files" and upload your PDF
-Click "Process PDF" button
-Wait for processing to complete
-Start asking questions in the chat!
+Select PDF Upload from the sidebar
+Upload a PDF file
+Click Process PDF
+Ask questions from the document
 
-Web Scraping Mode
+🌐 Web Scraping Mode
 
-Select "Website Scraping" in the sidebar
-Enter the URL you want to scrape (or use the default)
-Click "Scrape Website" button
-Wait for scraping to complete
-Start asking questions in the chat!
+Select Website Scraping
+Enter a URL (or use default)
+Click Scrape Website
+Ask questions from scraped content
 
-Advanced Settings
-Click on "Advanced Settings" in the sidebar to adjust:
+⚙️ Advanced Settings
 
-Temperature: Control response creativity (0 = deterministic, 1 = creative)
-Max Tokens: Limit response length
-Retrieval K: Number of relevant chunks to use for context
+Use the sidebar to adjust:
+Temperature (creativity control)
+Max response tokens
+Retrieval depth (K value)
+
+🧠 Key Design Principle
+
+The chatbot strictly answers only from the provided documents and web sources, ensuring high accuracy and zero hallucination.
+
+📌 Future Improvements (Optional)
+
+Multi-PDF support
+
+Chat history persistence
+
+Source citation highlighting
+
+Cloud deployment (Streamlit Community Cloud)
+
+⭐ Final Note
+
+This project demonstrates a production-ready RAG pipeline combining document intelligence, vector search, and LLM inference — suitable for enterprise, research, and knowledge-base applications.

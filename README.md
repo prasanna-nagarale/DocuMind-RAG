@@ -204,7 +204,7 @@ pip install --upgrade -r requirements.txt
 
 For questions or support, reach out via:
 - GitHub Issues
-- Email: your.nagaraleprasanna@example.com
+- Email: nagaraleprasanna@example.com
 
 ---
 
